@@ -20,10 +20,11 @@ fn smallest_divisor(x: int) -> int { find_divisor(x, 2) }
 fn is_prime(x: int) -> bool { x == smallest_divisor(x) }
 
 fn main() {
-    let num: int = 13195;
-//    let num: int = 600851475143;
+    let fnum: f64 = 600851475143f64;
+    let num: int = fnum as int;
+    let limit: int = fnum.sqrt() as int;
 
-    for n in range(1, num / 2).rev() {
+    for n in range(1, limit).rev() {
         if is_factor(n, num) && is_prime(n) {
             println!("{} is the largest prime factor of {}", n, num);
             break;
