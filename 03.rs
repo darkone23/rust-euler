@@ -5,6 +5,8 @@
 
 fn square(x: int) -> int { x * x }
 
+fn sqrt(x: int) -> int { (x as f64).sqrt() as int }
+
 fn is_factor(x: int, y: int) -> bool { y % x == 0 }
 
 fn find_divisor(x: int, attempt: int) -> int {
@@ -20,11 +22,8 @@ fn smallest_divisor(x: int) -> int { find_divisor(x, 2) }
 fn is_prime(x: int) -> bool { x == smallest_divisor(x) }
 
 fn main() {
-    let fnum: f64 = 600851475143f64;
-    let num: int = fnum as int;
-    let limit: int = fnum.sqrt() as int;
-
-    for n in range(1, limit).rev() {
+    let num: int = 600851475143;
+    for n in range(1, sqrt(num)).rev() {
         if is_factor(n, num) && is_prime(n) {
             println!("{} is the largest prime factor of {}", n, num);
             break;
